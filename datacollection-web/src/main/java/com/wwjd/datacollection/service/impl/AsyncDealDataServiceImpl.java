@@ -1,6 +1,6 @@
-package com.wwjd.dc.service.impl;
+package com.wwjd.datacollection.service.impl;
 
-import com.wwjd.dc.service.IAsyncDealDataService;
+import com.wwjd.datacollection.service.IAsyncDealDataService;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
@@ -13,7 +13,8 @@ import java.util.Map;
  * @Created 2018年12月14日 16:12:00
  */
 @Service
-public class AsyncDealDataServiceImpl implements IAsyncDealDataService {
+public final class AsyncDealDataServiceImpl implements IAsyncDealDataService {
+
     /**
      * async do something
      *
@@ -21,10 +22,12 @@ public class AsyncDealDataServiceImpl implements IAsyncDealDataService {
      * @return
      * @author adao
      * @time 2018/12/14 16:11
-     * @CopyRight 万物皆导
+     * @CopyRight 杭州弧途科技有限公司（qtshe）
      */
     @Override
     public void dealThirdSomething(Map<String, String> map) {
         // todo: 一些业务若需要数据，可入侵埋点系统，topic,key,system,condition
+
+
     }
 }

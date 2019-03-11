@@ -1,4 +1,4 @@
-package com.wwjd.dc.service;
+package com.wwjd.datacollection.service;
 
 import org.springframework.scheduling.annotation.Async;
 
@@ -18,7 +18,7 @@ public interface IAsyncDealDataService {
      *
      * @author adao
      * @time 2018/12/14 16:11
-     * @CopyRight 万物皆导
+     * @CopyRight 杭州弧途科技有限公司（qtshe）
      * @param map
      * @return
      */

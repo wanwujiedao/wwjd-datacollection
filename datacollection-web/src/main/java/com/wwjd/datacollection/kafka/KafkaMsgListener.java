@@ -1,7 +1,7 @@
-package com.wwjd.dc.kafka;
+package com.wwjd.datacollection.kafka;
 
-import com.wwjd.dc.constants.DataCollectionConstants;
-import com.wwjd.dc.service.IDataCollectionService;
+import com.wwjd.datacollection.constants.DataCollectionConstants;
+import com.wwjd.datacollection.service.IDataCollectionService;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
  * kafka consumer
  *
  * @author adao
- * @CopyRight 万物皆导
+ * @CopyRight 杭州弧途科技有限公司(qtshe)
  * @created 2018/11/29 14:56
  * @Modified_By adao 2018/11/29 14:56
  */
@@ -40,7 +40,7 @@ public final class KafkaMsgListener {
      * @return
      * @author adao
      * @time 2018/12/3 19:26
-     * @CopyRight 万物皆导
+     * @CopyRight 杭州弧途科技有限公司（qtshe）
      */
     @KafkaListener(topics = {DataCollectionConstants.DATA_COLLECTION_TOPIC})
     public void dataCollectionListen(ConsumerRecord<String, String> record, Acknowledgment acknowledgment) {

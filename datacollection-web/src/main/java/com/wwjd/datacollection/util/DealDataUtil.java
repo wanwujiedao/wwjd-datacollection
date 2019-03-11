@@ -1,9 +1,10 @@
-package com.wwjd.dc.util;
+package com.wwjd.datacollection.util;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.qts.base.util.JWTUtil;
-import com.wwjd.dc.constants.DataCollectionConstants;
+import com.wwjd.datacollection.constants.DataCollectionConstants;
+import org.apache.commons.codec.binary.Base64;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.CollectionUtils;
@@ -20,7 +21,7 @@ import java.util.Set;
  * Processiong some data from requster
  *
  * @author adao
- * @CopyRight 万物皆导
+ * @CopyRight qtshe
  * @Created 2018年11月29日 13:35:00
  */
 public final class DealDataUtil {
@@ -39,7 +40,7 @@ public final class DealDataUtil {
      * @return
      * @author adao
      * @time 2018/11/29 13:35
-     * @CopyRight 万物皆导
+     * @CopyRight 杭州弧途科技有限公司（qtshe）
      */
     public static Map<String, String> dealData(HttpServletRequest request, Set<String> headers) {
         // declare result
@@ -62,7 +63,7 @@ public final class DealDataUtil {
      * @return
      * @author adao
      * @time 2018/12/17 17:25
-     * @CopyRight 万物皆导
+     * @CopyRight 杭州弧途科技有限公司（qtshe）
      */
     public static Long getUserIdFromRequest(HttpServletRequest request) {
         String auth = request.getHeader(DataCollectionConstants.AUTHORIZATION);
@@ -102,7 +103,7 @@ public final class DealDataUtil {
      * @return
      * @author adao
      * @time 2018/11/29 14:33
-     * @CopyRight 万物皆导
+     * @CopyRight 杭州弧途科技有限公司（qtshe）
      */
     private static void dealImplicitData(Set<String> headers, HttpServletRequest request, Map<String, String> rs) {
         // if headers is empty
@@ -131,35 +132,36 @@ public final class DealDataUtil {
      * @return
      * @author adao
      * @time 2018/11/29 14:29
-     * @CopyRight 万物皆导
+     * @CopyRight 杭州弧途科技有限公司（qtshe）
      */
     private static void dealExplicitData(HttpServletRequest request, Map<String, String> rs) {
+        // Parameter enumeration
+        String spm = request.getParameter(DataCollectionConstants.S_P_M);
         try {
-            // Parameter enumeration
-            String spm = request.getParameter(DataCollectionConstants.S_P_M);
             // Amitabha, turn back to shore
             if (spm == null) {
                 return;
             }
 
             // get json
-            String json = new String(DECODER.decodeBuffer(spm), DataCollectionConstants.UTF_8);
+            String json = new String(Base64.decodeBase64(spm), DataCollectionConstants.UTF_8);
+
             // if not  null
             if (!StringUtils.isEmpty(json)) {
                 // ergodic
                 JSONObject.parseObject(json).forEach((key, value) -> {
                     // value is not null
                     if (value != null) {
-                        rs.put(key, value.toString());
+                        rs.put(humpToUnderline(key), value.toString());
                     }
                 });
             }
 
         } catch (Exception e) {
+            LOGGER.error("SPM=[{}]",spm);
             LOGGER.error(e.getMessage(), e);
         }
     }
-
 
     /**
      * get real IP
@@ -168,7 +170,7 @@ public final class DealDataUtil {
      * @return
      * @author adao
      * @time 2018/11/29 14:50
-     * @CopyRight 万物皆导
+     * @CopyRight 杭州弧途科技有限公司（qtshe）
      */
     private static String getIpAddress(HttpServletRequest request) {
 
@@ -217,7 +219,7 @@ public final class DealDataUtil {
      * @return
      * @author adao
      * @time 2018/12/5 15:54
-     * @CopyRight 万物皆导
+     * @CopyRight 杭州弧途科技有限公司（qtshe）
      */
     public static String getRowKey() {
         // get rowkey-format time
@@ -230,6 +232,33 @@ public final class DealDataUtil {
         }
         // return rowKey
         return rowKey;
+    }
+
+
+    /**
+     * camle name to underline
+     *
+     * @param para
+     * @return
+     * @author adao
+     * @time 2018/12/6 11:12
+     * @CopyRight 杭州弧途科技有限公司（qtshe）
+     */
+    public static String humpToUnderline(String para) {
+        // declare result
+        StringBuilder sb = new StringBuilder(para);
+        // record position from sb
+        int temp = DataCollectionConstants.ZERO;
+        // ergodic para
+        for (int i = DataCollectionConstants.ZERO; i < para.length(); i++) {
+            // do core
+            if (Character.isUpperCase(para.charAt(i))) {
+                sb.insert(i + temp, DataCollectionConstants.UNDER_LINE);
+                temp += DataCollectionConstants.ONE;
+            }
+        }
+        // return result
+        return sb.toString().toLowerCase();
     }
 
 }

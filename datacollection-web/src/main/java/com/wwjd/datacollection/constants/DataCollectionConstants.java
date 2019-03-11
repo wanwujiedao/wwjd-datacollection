@@ -1,10 +1,10 @@
-package com.wwjd.dc.constants;
+package com.wwjd.datacollection.constants;
 
 /**
  * Data Collection's Constants
  *
  * @author adao
- * @CopyRight 万物皆导
+ * @CopyRight qtshe
  * @Created 2018-12-04 14:26:00
  */
 public final class DataCollectionConstants {
@@ -14,11 +14,11 @@ public final class DataCollectionConstants {
      */
     public static final String JWT_PREFIX_BEARER = "Bearer";
     /**
-     * 编码格式
+     * charset
      */
     public static final String UTF_8 = "UTF-8";
     /**
-     * 埋点参数
+     * params
      */
     public static final String S_P_M = "spm";
     /**
@@ -36,16 +36,28 @@ public final class DataCollectionConstants {
     /**
      * event's Formal parameter
      */
-    public static final String EVENT_LIST = "e";
+    public static final String EVENT_LIST_SIMPLE = "e";
+    /**
+     * event's Formal parameter
+     */
+    public static final String EVENT_LIST = "event_list";
 
     /**
      * tableName
      */
     public static final String HBASE_TABLE_NAME = "data_collection";
     /**
+     * tableName
+     */
+    public static final String HBASE_TABLE_NAME_DAY = "data_collection_day";
+    /**
+     * a day data family column
+     */
+    public static final String HBASE_FAMILY_COLUM_DAY="f1";
+    /**
      * namespace
      */
-    public static final String HBASE_NAMESPACE = "万物皆导";
+    public static final String HBASE_NAMESPACE = "qtshe";
     /**
      * timestamp
      */
@@ -87,7 +99,11 @@ public final class DataCollectionConstants {
     /**
      * kafka rowKy format
      */
-    public static final String ROW_KEY_SDF = "yyyyMMddHHmmss";
+    public static final String ROW_KEY_SDF = "YYMMddHHmmss";
+    /**
+     * kafka rowKy format
+     */
+    public static final String ROW_KEY_DAY_SDF = "YYMMdd";
     /**
      * create time format
      */
@@ -151,4 +167,17 @@ public final class DataCollectionConstants {
      * One thousand
      */
     public final static int ONE_THOUSAND =1000;
+    /**
+     * deviceId
+     */
+    public final static String DEVICE_ID="device_id";
+
+    /**
+     * six point zero
+     */
+    public final static String SIX_POINT_ZERO = "0.0.0.0";
+    /**
+     * six zero
+     */
+    public final static String SIX_ZERO = "000000";
 }

@@ -1,6 +1,6 @@
-package com.wwjd.dc.util;
+package com.wwjd.datacollection.util;
 
-import com.wwjd.dc.constants.DataCollectionConstants;
+import com.wwjd.datacollection.constants.DataCollectionConstants;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -9,7 +9,7 @@ import java.util.Date;
  * date utils
  *
  * @author adao
- * @CopyRight 万物皆导
+ * @CopyRight qtshe
  * @Created 2018年12月05日 15:27:00
  */
 public final class DateUtils {
@@ -21,7 +21,7 @@ public final class DateUtils {
      * @return
      * @author adao
      * @time 2018/12/5 15:31
-     * @CopyRight 万物皆导
+     * @CopyRight 杭州弧途科技有限公司（qtshe）
      */
     public static String getDefaultFormatTime(Object timestampO) {
         Long timestamp;
@@ -31,7 +31,7 @@ public final class DateUtils {
             timestamp = System.currentTimeMillis();
         } else {
             // deal timestamp
-            timestamp = sToMs((long) timestampO);
+            timestamp = sToMs( Long.valueOf(timestampO.toString()));
         }
 
         // return result
@@ -45,7 +45,7 @@ public final class DateUtils {
      * @return
      * @author adao
      * @time 2018/12/6 14:05
-     * @CopyRight 万物皆导
+     * @CopyRight 杭州弧途科技有限公司（qtshe）
      */
     public static String getNow() {
         // return result
@@ -59,13 +59,16 @@ public final class DateUtils {
      * @return
      * @author adao
      * @time 2018/12/5 15:56
-     * @CopyRight 万物皆导
+     * @CopyRight 杭州弧途科技有限公司（qtshe）
      */
     public static String getRowKeyTime() {
         // return result
         return new SimpleDateFormat(DataCollectionConstants.ROW_KEY_SDF).format(new Date());
     }
-
+    public static String getRowKeyDay() {
+        // return result
+        return new SimpleDateFormat(DataCollectionConstants.ROW_KEY_DAY_SDF).format(new Date());
+    }
 
     /**
      * s to ms
@@ -73,7 +76,7 @@ public final class DateUtils {
      * @return
      * @author adao
      * @time 2018/5/18 12:58
-     * @CopyRight 万物皆导
+     * @CopyRight 杭州弧途科技有限公司（qtshe）
      * @Param s
      */
     private static Long sToMs(Long s) {
