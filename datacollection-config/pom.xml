@@ -15,7 +15,7 @@
     <packaging>jar</packaging>
 
     <properties>
-        <hbase.version>1.4.8</hbase.version>
+        <hbase.version>2.0.3</hbase.version>
     </properties>
 
     <dependencies>
@@ -32,31 +32,37 @@
 
         <!--com.qts.pulsarconfigconfig.hbase-->
         <dependency>
-            <groupId>org.apache.hbase</groupId>
-            <artifactId>hbase-client</artifactId>
-            <version>${hbase.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>guava</artifactId>
-                    <groupId>com.google.guava</groupId>
-                </exclusion>
-            </exclusions>
+            <groupId>com.aliyun.hbase</groupId>
+            <artifactId>alihbase-client</artifactId>
+            <version>2.0.0</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.hbase</groupId>
-            <artifactId>hbase-protocol</artifactId>
-            <version>${hbase.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.hbase</groupId>
-            <artifactId>hbase-common</artifactId>
-            <version>${hbase.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.hbase</groupId>
-            <artifactId>hbase-server</artifactId>
-            <version>${hbase.version}</version>
-        </dependency>
+
+        <!--<dependency>-->
+            <!--<groupId>org.apache.hbase</groupId>-->
+            <!--<artifactId>hbase-client</artifactId>-->
+            <!--<version>${hbase.version}</version>-->
+            <!--<exclusions>-->
+                <!--<exclusion>-->
+                    <!--<artifactId>guava</artifactId>-->
+                    <!--<groupId>com.google.guava</groupId>-->
+                <!--</exclusion>-->
+            <!--</exclusions>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.apache.hbase</groupId>-->
+            <!--<artifactId>hbase-protocol</artifactId>-->
+            <!--<version>${hbase.version}</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.apache.hbase</groupId>-->
+            <!--<artifactId>hbase-common</artifactId>-->
+            <!--<version>${hbase.version}</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.apache.hbase</groupId>-->
+            <!--<artifactId>hbase-server</artifactId>-->
+            <!--<version>${hbase.version}</version>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-hadoop</artifactId>

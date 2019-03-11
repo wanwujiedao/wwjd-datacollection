@@ -1,4 +1,4 @@
-package com.wwjd.config.hbase;
+package com.wwjd.datacollection.config.hbase;
 
 
 import org.springframework.context.annotation.Import;
@@ -9,7 +9,7 @@ import java.lang.annotation.*;
  * enable com.qts.pulsarconfig.hbase
  *
  * @author adao
- * @CopyRight 万物皆导
+ * @CopyRight qtshe
  * @Created 2018-11-23 16:22:00
  */
 @Target(ElementType.TYPE)
