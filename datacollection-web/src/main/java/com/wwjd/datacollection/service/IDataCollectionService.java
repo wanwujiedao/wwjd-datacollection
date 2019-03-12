@@ -18,7 +18,7 @@ public interface IDataCollectionService {
      *
      * @author adao
      * @time 2018/12/3 20:35
-     * @CopyRight 杭州弧途科技有限公司（qtshe）
+     * @CopyRight 万物皆导
      * @param record
      * @return
      */
@@ -30,7 +30,7 @@ public interface IDataCollectionService {
      *
      * @author adao
      * @time 2018/12/3 20:35
-     * @CopyRight 杭州弧途科技有限公司（qtshe）
+     * @CopyRight 万物皆导
      * @param map
      * @param rowKey
      * @return

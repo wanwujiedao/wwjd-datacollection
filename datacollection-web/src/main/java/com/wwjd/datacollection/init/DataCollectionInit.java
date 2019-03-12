@@ -1,6 +1,6 @@
 package com.wwjd.datacollection.init;
 
-import com.qts.datacollection.config.init.DataCollectionInitProperties;
+import com.wwjd.datacollection.config.init.DataCollectionInitProperties;
 import com.wwjd.datacollection.constants.DataCollectionConstants;
 import com.wwjd.datacollection.service.IHbaseService;
 import org.slf4j.Logger;
@@ -18,7 +18,7 @@ import java.util.Map;
  * initualize class
  *
  * @author adao
- * @CopyRight qtshe
+ * @CopyRight 万物皆导
  * @Created 2018-12-04 12:07:00
  */
 @Component
@@ -48,7 +48,7 @@ public final class DataCollectionInit implements InitializingBean {
      * @return
      * @author adao
      * @time 2018/12/4 13:40
-     * @CopyRight 杭州弧途科技有限公司（qtshe）
+     * @CopyRight 万物皆导
      */
     private void dealCongig() {
         Map<String, List<String>> familyMappingColumn = dataCollectionInitProperties.getFamilyMappingColumn();
@@ -68,7 +68,7 @@ public final class DataCollectionInit implements InitializingBean {
      * @return
      * @author adao
      * @time 2018/12/5 9:31
-     * @CopyRight 杭州弧途科技有限公司（qtshe）
+     * @CopyRight 万物皆导
      */
     @Override
     public final void afterPropertiesSet() {

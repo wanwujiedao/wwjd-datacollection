@@ -1,6 +1,6 @@
 package com.wwjd.datacollection.service.impl;
 
-import com.qts.datacollection.config.hbase.HbaseBean;
+import com.wwjd.datacollection.config.hbase.HbaseBean;
 import com.wwjd.datacollection.constants.DataCollectionConstants;
 import com.wwjd.datacollection.service.IHbaseService;
 import org.apache.hadoop.hbase.NamespaceDescriptor;
@@ -23,7 +23,7 @@ import java.util.Set;
  * com.qts.pulsarconfig.hbase service implement
  *
  * @author adao
- * @CopyRight qtshe
+ * @CopyRight 万物皆导
  * @Created 2018年12月05日 10:40:00
  */
 @Service
@@ -45,7 +45,7 @@ public final class HbaseServiceImpl implements IHbaseService {
      * @throws IOException
      * @author adao
      * @time 2018/12/5 10:39
-     * @CopyRight 杭州弧途科技有限公司（qtshe）
+     * @CopyRight 万物皆导
      */
     @Override
     public final void creatTable(String nameSpace, String tableName, Set<String> familyColumns) throws IOException {
@@ -95,7 +95,7 @@ public final class HbaseServiceImpl implements IHbaseService {
      * @return
      * @author adao
      * @time 2018/12/5 14:18
-     * @CopyRight 杭州弧途科技有限公司（qtshe）
+     * @CopyRight 万物皆导
      */
     @Override
     public final boolean batchSaveData(String nameSpace, String tableName, Map<String, List<HbaseBean>> hbaseBeanMap) {

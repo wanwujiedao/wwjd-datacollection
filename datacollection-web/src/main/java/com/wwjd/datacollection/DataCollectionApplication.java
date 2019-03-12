@@ -1,6 +1,6 @@
 package com.wwjd.datacollection;
 
-import com.qts.datacollection.config.hbase.EnableHbase;
+import com.wwjd.datacollection.config.hbase.EnableHbase;
 import org.apache.catalina.connector.Connector;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,7 +26,7 @@ import java.util.concurrent.TimeUnit;
  * Data Collection Application
  *
  * @author adao
- * @CopyRight 杭州弧途科技有限公司(qtshe)
+ * @CopyRight 万物皆导
  * @created 2018/11/29 15:10
  * @Modified_By adao 2018/11/29 15:10
  */
@@ -45,7 +45,7 @@ public class DataCollectionApplication {
      * @return
      * @author adao
      * @time 2018/11/29 15:10
-     * @CopyRight 杭州弧途科技有限公司（qtshe）
+     * @CopyRight 万物皆导
      */
     public static void main(String[] args) {
         // It's time for show.
@@ -64,9 +64,9 @@ public class DataCollectionApplication {
     /**
      * tomcat config
      *
-     * @author 阿导
+     * @author adao
      * @time 2019/2/27 15:26
-     * @CopyRight 杭州弧途科技有限公司（青团社）
+     * @CopyRight 万物皆导
      * @param
      * @return
      */
@@ -80,10 +80,10 @@ public class DataCollectionApplication {
     /**
      * 优雅关闭 Spring Boot。容器必须是 tomcat
      *
-     * @author 阿导
-     * @CopyRight 杭州弧途科技有限公司(青团社)
+     * @author adao
+     * @CopyRight 万物皆导
      * @created 2019/2/27 15:27
-     * @Modified_By 阿导 2019/2/27 15:27
+     * @Modified_By adao 2019/2/27 15:27
      */
 
     private class GracefulShutdown implements TomcatConnectorCustomizer, ApplicationListener<ContextClosedEvent> {
@@ -95,9 +95,9 @@ public class DataCollectionApplication {
         /**
          * 构造方法
          *
-         * @author 阿导
+         * @author adao
          * @time 2019/2/27 15:27
-         * @CopyRight 杭州弧途科技有限公司（青团社）
+         * @CopyRight 万物皆导
          * @param connector
          * @return
          */
@@ -108,9 +108,9 @@ public class DataCollectionApplication {
         /**
          * 重写方法
          *
-         * @author 阿导
+         * @author adao
          * @time 2019/2/27 15:28
-         * @CopyRight 杭州弧途科技有限公司（青团社）
+         * @CopyRight 万物皆导
          * @param contextClosedEvent
          * @return
          */

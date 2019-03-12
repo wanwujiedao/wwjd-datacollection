@@ -59,7 +59,7 @@ public class PulsarTest {
      *
      * @author adao
      * @time 2018/12/17 19:18
-     * @CopyRight 杭州弧途科技有限公司（qtshe）
+     * @CopyRight 万物皆导
      * @param
      * @return
      */

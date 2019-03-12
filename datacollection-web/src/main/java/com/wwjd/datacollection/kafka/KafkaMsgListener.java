@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
  * kafka consumer
  *
  * @author adao
- * @CopyRight 杭州弧途科技有限公司(qtshe)
+ * @CopyRight 万物皆导
  * @created 2018/11/29 14:56
  * @Modified_By adao 2018/11/29 14:56
  */
@@ -40,7 +40,7 @@ public final class KafkaMsgListener {
      * @return
      * @author adao
      * @time 2018/12/3 19:26
-     * @CopyRight 杭州弧途科技有限公司（qtshe）
+     * @CopyRight 万物皆导
      */
     @KafkaListener(topics = {DataCollectionConstants.DATA_COLLECTION_TOPIC})
     public void dataCollectionListen(ConsumerRecord<String, String> record, Acknowledgment acknowledgment) {

@@ -1,6 +1,6 @@
 package com.wwjd.datacollection.service;
 
-import com.qts.datacollection.config.hbase.HbaseBean;
+import com.wwjd.datacollection.config.hbase.HbaseBean;
 
 import java.io.IOException;
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.Set;
  * com.qts.pulsarconfig.hbase service interface
  *
  * @author adao
- * @CopyRight qtshe
+ * @CopyRight 万物皆导
  * @Created 2018年12月05日 10:13:00
  */
 public interface IHbaseService {
@@ -21,7 +21,7 @@ public interface IHbaseService {
      *
      * @author adao
      * @time 2018/12/5 10:39
-     * @CopyRight 杭州弧途科技有限公司（qtshe）
+     * @CopyRight 万物皆导
      * @param nameSpace
      * @param tableName
      * @param familyColumn
@@ -35,7 +35,7 @@ public interface IHbaseService {
      *
      * @author adao
      * @time 2018/12/5 14:18
-     * @CopyRight 杭州弧途科技有限公司（qtshe）
+     * @CopyRight 万物皆导
      * @param nameSpace
      * @param tableName
      * @param hbaseBeanMap

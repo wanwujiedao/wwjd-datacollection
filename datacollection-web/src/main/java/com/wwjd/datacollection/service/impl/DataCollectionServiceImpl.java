@@ -2,8 +2,8 @@ package com.wwjd.datacollection.service.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.qts.datacollection.config.hbase.HbaseBean;
-import com.qts.datacollection.config.init.DataCollectionInitProperties;
+import com.wwjd.datacollection.config.hbase.HbaseBean;
+import com.wwjd.datacollection.config.init.DataCollectionInitProperties;
 import com.wwjd.datacollection.constants.DataCollectionConstants;
 import com.wwjd.datacollection.init.DataCollectionConfig;
 import com.wwjd.datacollection.service.IAsyncDealDataService;
@@ -24,7 +24,7 @@ import java.util.concurrent.atomic.AtomicReference;
  * data collection service implement
  *
  * @author adao
- * @CopyRight qtshe
+ * @CopyRight 万物皆导
  * @Created 2018年12月03日 19:30:00
  */
 @Service
@@ -54,11 +54,10 @@ public final class DataCollectionServiceImpl implements IDataCollectionService {
      * @return
      * @author adao
      * @time 2018/12/3 20:35
-     * @CopyRight 杭州弧途科技有限公司（qtshe）
+     * @CopyRight 万物皆导
      */
     @Override
     public final boolean dealCollection(ConsumerRecord<String, String> record) {
-
         // get rowkey prefix
         String keyPre = record.key();
         // get message body
@@ -69,10 +68,12 @@ public final class DataCollectionServiceImpl implements IDataCollectionService {
         }
         // message body parse to map
         Map<String, String> map = (Map<String, String>) JSONObject.parse(value);
-        asyncDealDataService.dealThirdSomething(map);
+        // get detail data
+        Map<String, List<HbaseBean>> listMap = DataCollectionServiceHelper.dealMsgData(keyPre, map, dataCollectionInitProperties);
+        // async deal data for business
+        asyncDealDataService.dealThirdSomething(listMap);
         // procession something，and save in com.qts.pulsarconfig.hbase
-        return hbaseService.batchSaveData(DataCollectionConstants.HBASE_NAMESPACE, DataCollectionConstants.HBASE_TABLE_NAME, DataCollectionServiceHelper.dealMsgData(keyPre, map, dataCollectionInitProperties));
-
+        return hbaseService.batchSaveData(DataCollectionConstants.HBASE_NAMESPACE, DataCollectionConstants.HBASE_TABLE_NAME,listMap);
     }
 
     /**
@@ -83,7 +84,7 @@ public final class DataCollectionServiceImpl implements IDataCollectionService {
      * @return
      * @author adao
      * @time 2018/12/3 20:35
-     * @CopyRight 杭州弧途科技有限公司（qtshe）
+     * @CopyRight 万物皆导
      */
     @Override
     public boolean dealCollectionDay(Map<String, String> map,String rowKey) {
@@ -113,7 +114,7 @@ public final class DataCollectionServiceImpl implements IDataCollectionService {
          * @return
          * @author adao
          * @time 2018/12/6 10:25
-         * @CopyRight 杭州弧途科技有限公司（qtshe）
+         * @CopyRight 万物皆导
          */
         private static Map<String, List<HbaseBean>> dealMsgData(String keyPre, Map<String, String> map, DataCollectionInitProperties dataCollectionInitProperties) {
             // declare result
@@ -139,7 +140,7 @@ public final class DataCollectionServiceImpl implements IDataCollectionService {
          * @return
          * @author adao
          * @time 2018/12/6 11:12
-         * @CopyRight 杭州弧途科技有限公司（qtshe）
+         * @CopyRight 万物皆导
          */
         private static void dealOtherParam(String keyPre, List<HbaseBean> list, String eventList, Map<String, List<HbaseBean>> hbaseBeanMap, DataCollectionInitProperties dataCollectionInitProperties) {
             // atomic Integer ,record rowKey number
@@ -186,7 +187,7 @@ public final class DataCollectionServiceImpl implements IDataCollectionService {
          * @return
          * @author adao
          * @time 2018/12/6 11:12
-         * @CopyRight 杭州弧途科技有限公司（qtshe）
+         * @CopyRight 万物皆导
          */
         private static void addThisList(String key, Object value, List<HbaseBean> list,Set<String> pulsarWhiteQualifier) {
             addThisList(DataCollectionConfig.getFamilyColumns(key),key,value,list,pulsarWhiteQualifier);
@@ -202,7 +203,7 @@ public final class DataCollectionServiceImpl implements IDataCollectionService {
          * @return
          * @author adao
          * @time 2018/12/6 11:12
-         * @CopyRight 杭州弧途科技有限公司（qtshe）
+         * @CopyRight 万物皆导
          */
         private static void addThisList(String familyColumn, String key, Object value, List<HbaseBean> list, Set<String> qtsQualifier) {
             // if  not null
@@ -227,7 +228,7 @@ public final class DataCollectionServiceImpl implements IDataCollectionService {
          * @return
          * @author adao
          * @time 2018/12/6 11:12
-         * @CopyRight 杭州弧途科技有限公司（qtshe）
+         * @CopyRight 万物皆导
          */
         private static List<HbaseBean> getCommonParams(Map<String, String> map, DataCollectionInitProperties dataCollectionInitProperties) {
             // declare hbaseBen List

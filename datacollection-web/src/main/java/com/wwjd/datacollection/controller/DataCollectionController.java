@@ -1,7 +1,7 @@
 package com.wwjd.datacollection.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.qts.datacollection.config.init.DataCollectionInitProperties;
+import com.wwjd.datacollection.config.init.DataCollectionInitProperties;
 import com.wwjd.datacollection.constants.DataCollectionConstants;
 import com.wwjd.datacollection.service.IDataCollectionService;
 import com.wwjd.datacollection.util.DateUtils;
@@ -20,7 +20,7 @@ import java.util.Map;
  * DATA COLLECTION CONTOLLER
  *
  * @author adao
- * @CopyRight qtshe
+ * @CopyRight 万物皆导
  * @Created 2018-11-29 13:26:00
  */
 @RestController
@@ -96,7 +96,7 @@ public final class DataCollectionController {
                 // user id
                 data.put(DealDataUtil.humpToUnderline(DataCollectionConstants.USER_ID), userId == null ? DataCollectionConstants.ZERO.toString() : userId.toString());
                 // rowKey=yyyymmdd concat deviceId
-                dataCollectionService.dealCollectionDay(data, DateUtils.getRowKeyDay().concat(data.getOrDefault(DataCollectionConstants.DEVICE_ID,"")));
+                dataCollectionService.dealCollectionDay(data, DateUtils.getRowKeyDay().concat(data.getOrDefault(DataCollectionConstants.DEVICE_ID,DataCollectionConstants.BLANK)));
                 rs.setCode(4000);
                 rs.setMsg("Everything is ok!");
                 rs.setData(true);

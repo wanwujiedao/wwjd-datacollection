@@ -21,7 +21,7 @@ public final class DateUtils {
      * @return
      * @author adao
      * @time 2018/12/5 15:31
-     * @CopyRight 杭州弧途科技有限公司（qtshe）
+     * @CopyRight 万物皆导
      */
     public static String getDefaultFormatTime(Object timestampO) {
         Long timestamp;
@@ -45,7 +45,7 @@ public final class DateUtils {
      * @return
      * @author adao
      * @time 2018/12/6 14:05
-     * @CopyRight 杭州弧途科技有限公司（qtshe）
+     * @CopyRight 万物皆导
      */
     public static String getNow() {
         // return result
@@ -59,7 +59,7 @@ public final class DateUtils {
      * @return
      * @author adao
      * @time 2018/12/5 15:56
-     * @CopyRight 杭州弧途科技有限公司（qtshe）
+     * @CopyRight 万物皆导
      */
     public static String getRowKeyTime() {
         // return result
@@ -76,7 +76,7 @@ public final class DateUtils {
      * @return
      * @author adao
      * @time 2018/5/18 12:58
-     * @CopyRight 杭州弧途科技有限公司（qtshe）
+     * @CopyRight 万物皆导
      * @Param s
      */
     private static Long sToMs(Long s) {

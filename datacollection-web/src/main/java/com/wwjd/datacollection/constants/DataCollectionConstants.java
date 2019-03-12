@@ -4,11 +4,14 @@ package com.wwjd.datacollection.constants;
  * Data Collection's Constants
  *
  * @author adao
- * @CopyRight qtshe
+ * @CopyRight 万物皆导
  * @Created 2018-12-04 14:26:00
  */
 public final class DataCollectionConstants {
-
+    /**
+     * blank
+     */
+    public static final String BLANK = "";
     /**
      * json  web token
      */

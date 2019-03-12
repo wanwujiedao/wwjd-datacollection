@@ -1,6 +1,6 @@
 package com.wwjd.datacollection.job;
 
-import com.qts.datacollection.config.hbase.HbaseBean;
+import com.wwjd.datacollection.config.hbase.HbaseBean;
 import com.wwjd.datacollection.constants.DataCollectionConstants;
 import com.wwjd.datacollection.service.IHbaseService;
 import com.wwjd.datacollection.util.DateUtils;
@@ -16,8 +16,8 @@ import java.util.Map;
 /**
  * 每天第一个点入库
  *
- * @author 阿导
- * @CopyRight 青团社
+ * @author adao
+ * @CopyRight 万物皆导
  * @Created 2019年03月05日 09:51:00
  */
 @Component
@@ -34,14 +34,14 @@ public class EveryDayFirstDataJob {
      *
      * @param
      * @return
-     * @author 阿导
+     * @author adao
      * @time 2019/3/5 11:06
-     * @CopyRight 杭州弧途科技有限公司（青团社）
+     * @CopyRight 万物皆导
      */
     @Scheduled(cron = "0 0 0 * * ?")
     public void dealCore() {
             // set content
-            Map<String, List<HbaseBean>> map = new HashMap<>();
+            Map<String, List<HbaseBean>> map = new HashMap<>(DataCollectionConstants.SIXTEEN);
             List<HbaseBean> list = new ArrayList<>();
             HbaseBean hbaseBean = new HbaseBean();
             hbaseBean.setFamily(DataCollectionConstants.HBASE_FAMILY_COLUM_DAY);

@@ -40,7 +40,7 @@ public final class DealDataUtil {
      * @return
      * @author adao
      * @time 2018/11/29 13:35
-     * @CopyRight 杭州弧途科技有限公司（qtshe）
+     * @CopyRight 万物皆导
      */
     public static Map<String, String> dealData(HttpServletRequest request, Set<String> headers) {
         // declare result
@@ -63,7 +63,7 @@ public final class DealDataUtil {
      * @return
      * @author adao
      * @time 2018/12/17 17:25
-     * @CopyRight 杭州弧途科技有限公司（qtshe）
+     * @CopyRight 万物皆导
      */
     public static Long getUserIdFromRequest(HttpServletRequest request) {
         String auth = request.getHeader(DataCollectionConstants.AUTHORIZATION);
@@ -103,7 +103,7 @@ public final class DealDataUtil {
      * @return
      * @author adao
      * @time 2018/11/29 14:33
-     * @CopyRight 杭州弧途科技有限公司（qtshe）
+     * @CopyRight 万物皆导
      */
     private static void dealImplicitData(Set<String> headers, HttpServletRequest request, Map<String, String> rs) {
         // if headers is empty
@@ -132,7 +132,7 @@ public final class DealDataUtil {
      * @return
      * @author adao
      * @time 2018/11/29 14:29
-     * @CopyRight 杭州弧途科技有限公司（qtshe）
+     * @CopyRight 万物皆导
      */
     private static void dealExplicitData(HttpServletRequest request, Map<String, String> rs) {
         // Parameter enumeration
@@ -170,7 +170,7 @@ public final class DealDataUtil {
      * @return
      * @author adao
      * @time 2018/11/29 14:50
-     * @CopyRight 杭州弧途科技有限公司（qtshe）
+     * @CopyRight 万物皆导
      */
     private static String getIpAddress(HttpServletRequest request) {
 
@@ -219,7 +219,7 @@ public final class DealDataUtil {
      * @return
      * @author adao
      * @time 2018/12/5 15:54
-     * @CopyRight 杭州弧途科技有限公司（qtshe）
+     * @CopyRight 万物皆导
      */
     public static String getRowKey() {
         // get rowkey-format time
@@ -242,7 +242,7 @@ public final class DealDataUtil {
      * @return
      * @author adao
      * @time 2018/12/6 11:12
-     * @CopyRight 杭州弧途科技有限公司（qtshe）
+     * @CopyRight 万物皆导
      */
     public static String humpToUnderline(String para) {
         // declare result
@@ -261,4 +261,43 @@ public final class DealDataUtil {
         return sb.toString().toLowerCase();
     }
 
+
+    /**
+     * underline name to camle
+     *
+     * @author adao
+     * @time 2019/3/12 13:38
+     * @CopyRight 万物皆导
+     * @param para
+     * @return
+     */
+    public static String camelName(String para) {
+        StringBuilder result = new StringBuilder();
+        // 快速检查
+        if (StringUtils.isEmpty(para)) {
+            // 没必要转换
+            return DataCollectionConstants.BLANK;
+        } else if (!para.contains(DataCollectionConstants.UNDER_LINE)) {
+            // 不含下划线，仅将首字母小写
+            return para.substring(DataCollectionConstants.ZERO, DataCollectionConstants.ONE).toLowerCase() + para.substring(DataCollectionConstants.ONE);
+        }
+        // 用下划线将原始字符串分割
+        String camels[] = para.split(DataCollectionConstants.UNDER_LINE);
+        for (String camel :  camels) {
+            // 跳过原始字符串中开头、结尾的下换线或双重下划线
+            if (camel.isEmpty()) {
+                continue;
+            }
+            // 处理真正的驼峰片段
+            if (result.length() == DataCollectionConstants.ZERO) {
+                // 第一个驼峰片段，全部字母都小写
+                result.append(camel.toLowerCase());
+            } else {
+                // 其他的驼峰片段，首字母大写
+                result.append(camel.substring(DataCollectionConstants.ZERO, DataCollectionConstants.ONE).toUpperCase());
+                result.append(camel.substring(DataCollectionConstants.ONE).toLowerCase());
+            }
+        }
+        return result.toString();
+    }
 }
