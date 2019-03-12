@@ -14,7 +14,7 @@ import java.io.IOException;
  * com.qts.pulsarconfig.hbase congiguration
  *
  * @author adao
- * @CopyRight 杭州弧途科技有限公司(qtshe)
+ * @CopyRight 万物皆导
  * @created 2018/11/23 10:20
  * @Modified_By adao 2018/11/23 10:20
  */
@@ -35,9 +35,9 @@ public final class HbaseConfiguration {
     /**
      * 连接 hbase
      *
-     * @author 阿导
+     * @author adao
      * @time 2019/1/3 10:29
-     * @CopyRight 杭州弧途科技有限公司（青团社）
+     * @CopyRight 万物皆导
      * @param
      * @return
      */
@@ -53,7 +53,7 @@ public final class HbaseConfiguration {
      * @return
      * @author adao
      * @time 2018/12/5 13:17
-     * @CopyRight 杭州弧途科技有限公司（qtshe）
+     * @CopyRight 万物皆导
      */
 //    @Bean
 //    public Admin admin() throws IOException {
@@ -68,7 +68,7 @@ public final class HbaseConfiguration {
      * @return
      * @author adao
      * @time 2018/12/6 13:20
-     * @CopyRight 杭州弧途科技有限公司（qtshe）
+     * @CopyRight 万物皆导
      */
     private Configuration getConf() {
         // create com.qts.pulsarconfig.hbase configuration

@@ -8,7 +8,7 @@ import org.springframework.core.annotation.Order;
  * com.qts.pulsarconfig.hbase configuration properties
  *
  * @author adao
- * @CopyRight qtshe
+ * @CopyRight 万物皆导
  * @Created 2018-11-23 10:10:00
  */
 @Order(Ordered.HIGHEST_PRECEDENCE)

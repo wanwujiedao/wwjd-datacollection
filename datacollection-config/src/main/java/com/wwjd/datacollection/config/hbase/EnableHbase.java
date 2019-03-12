@@ -9,7 +9,7 @@ import java.lang.annotation.*;
  * enable com.qts.pulsarconfig.hbase
  *
  * @author adao
- * @CopyRight qtshe
+ * @CopyRight 万物皆导
  * @Created 2018-11-23 16:22:00
  */
 @Target(ElementType.TYPE)

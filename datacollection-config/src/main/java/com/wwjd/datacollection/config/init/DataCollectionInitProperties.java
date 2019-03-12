@@ -13,7 +13,7 @@ import java.util.Set;
  * Data collection initualize configuration
  *
  * @author adao
- * @CopyRight qtshe
+ * @CopyRight 万物皆导
  * @Created 2018-12-17 11:29:00
  */
 @Order(Ordered.HIGHEST_PRECEDENCE)

@@ -1,2 +1,2 @@
 # Auto Configure
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.wwjd.datacollection.config.init.DataCollectionInitProperties
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.wwjd.datacollection.config.init.DataCollectionInitProperties,com.wwjd.datacollection.config.business.BusinessFilterProperties

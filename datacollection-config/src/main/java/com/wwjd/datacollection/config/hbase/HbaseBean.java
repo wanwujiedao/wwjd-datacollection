@@ -6,7 +6,7 @@ import java.io.Serializable;
  * com.qts.pulsarconfig.hbase bean
  *
  * @author adao
- * @CopyRight qtshe
+ * @CopyRight 万物皆导
  * @Created 2018-12-05 13:59:00
  */
 public final class HbaseBean implements Serializable {
