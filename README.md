@@ -192,7 +192,7 @@ wwjd.data-collection.cofig.family_mapping_column.f2=
 
 ### 每日打开埋点源方发起埋点数据
 
-- `namespace`:wwjdhe
+- `namespace`:wwjd
 
 - `tablename`:data_collection_day
 
@@ -213,7 +213,7 @@ wwjd.data-collection.cofig.family_mapping_column.f2=
 
 ### 常规埋点数据
 
-- `namespace`:wwjdhe
+- `namespace`:wwjd
 
 - `tablename`:data_collection
 
