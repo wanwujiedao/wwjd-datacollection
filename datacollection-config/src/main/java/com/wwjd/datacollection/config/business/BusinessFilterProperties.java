@@ -6,6 +6,7 @@ import org.springframework.core.annotation.Order;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Set;
 
 /**
  *
@@ -44,7 +45,10 @@ public final class BusinessFilterProperties {
          * topic for business
          */
        private String topic;
-
+        /**
+         * need datas
+         */
+        private Set<String> fields;
        /**
         * detail for key
         */
@@ -56,6 +60,14 @@ public final class BusinessFilterProperties {
 
         public void setTopic(String topic) {
             this.topic = topic;
+        }
+
+        public Set<String> getFields() {
+            return fields;
+        }
+
+        public void setFields(Set<String> fields) {
+            this.fields = fields;
         }
 
         public Map<String, String> getKeys() {

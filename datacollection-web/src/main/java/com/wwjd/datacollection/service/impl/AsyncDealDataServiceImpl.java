@@ -15,10 +15,7 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * async do something service implement
@@ -142,13 +139,14 @@ public  class AsyncDealDataServiceImpl implements IAsyncDealDataService {
         private static Map<String, List<Map<String, String>>> getFilterData(Map<String, BusinessFilterProperties.Rule> rules, List<Map<String, String>> listColumns) {
             // declare result
             Map<String, List<Map<String, String>>> rs = new HashMap<>(DataCollectionConstants.SIXTEEN);
-
+            // copy list
+            List<Map<String, String>> listColumnsCopy = new ArrayList<>();
             rules.forEach((business, rule) -> {
-                // copy list
-                List<Map<String, String>> listColumnsCopy = new ArrayList<>();
+                List<Map<String, String>> listColumnRs = new ArrayList<>();
                 listColumnsCopy.addAll(listColumns);
                 // topic
                 String topic = rule.getTopic();
+                Set<String> fields = rule.getFields();
 
                 List<ICriteria> criteriaList = new ArrayList<>();
                 // rule key
@@ -159,7 +157,17 @@ public  class AsyncDealDataServiceImpl implements IAsyncDealDataService {
                 criteriaChain.meetCriteria(listColumnsCopy);
                 // if not empty then add in list
                 if (!CollectionUtils.isEmpty(listColumnsCopy)) {
-                    rs.put(topic, listColumnsCopy);
+                    listColumnsCopy.forEach(columnsCopy->{
+                        Map map = new HashMap(DataCollectionConstants.SIXTEEN);
+                        columnsCopy.forEach((key,val)->{
+                            if(fields.contains(key)) {
+                                map.put(key, val);
+                            }
+                        });
+                        listColumnRs.add(map);
+                    });
+                    listColumnsCopy.clear();
+                    rs.put(topic, listColumnRs);
                 }
             });
             // return result

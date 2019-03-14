@@ -104,6 +104,20 @@ wwjd.data-collection.cofig.family_mapping_column.f2=
 
 ```
 
+### 业务入侵配置
+
+```properties
+
+# 某个业务的主题
+qts.business.filter.rules.cpc.topic=qts_cpc_count_topic
+# 过滤规则，目前只支持多个规则且关系过滤
+qts.business.filter.rules.cpc.keys.eventType=[1]
+# 对应某个业务需要的内容
+qts.business.filter.rules.cpc.fields=contentId,eventType
+
+
+
+```
 
 # 埋点数据源方和后端交互
 
@@ -239,6 +253,128 @@ wwjd.data-collection.cofig.family_mapping_column.f2=
 |f1|json  |存储整个 eventList json 串|
 |f1|create_time |落库时间。理论这个不需要，为了方便设计|
 
+
+# 业务入侵对接
+
+- 引入 jar
+
+```xml
+
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
+            <version>2.2.0.RELEASE</version>
+        </dependency>
+
+```
+
+- 配置
+
+```properties
+
+# consumer
+spring.kafka.consumer.bootstrap-servers=4127.0.0.1:9092,4127.0.0.1:9093,4127.0.0.1:9094
+spring.kafka.consumer.enable-auto-commit=false
+spring.kafka.consumer.auto-commit-interval=100
+spring.kafka.listener.poll-timeout=1500
+spring.kafka.listener.ack-mode=manual_immediate
+spring.kafka.listener.concurrency=10
+spring.kafka.consumer.key-deserializer=org.apache.kafka.common.serialization.StringDeserializer
+spring.kafka.consumer.value-deserializer=org.apache.kafka.common.serialization.StringDeserializer
+# 消费组尽可能的一个项目指定一个，可同时订阅多个主题，通过 key 合理分发，或者单个接受 key 也可以
+spring.kafka.consumer.group-id=wwjdGroup
+spring.kafka.consumer.auto-offset-reset=latest
+spring.kafka.consumer.properties.sasl.mechanism=PLAIN
+spring.kafka.consumer.properties.security.protocol=SASL_PLAINTEXT
+spring.kafka.consumer.properties.sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="wwjd" password="123456";
+
+
+```
+
+
+- 订阅主题，代码接收
+
+```java
+
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import org.apache.kafka.clients.consumer.ConsumerRecord;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.kafka.support.Acknowledgment;
+import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
+
+import java.util.List;
+import java.util.Map;
+
+/**
+ * kafka consumer
+ *
+ * @author adao
+ * @CopyRight 万物皆导
+ * @created 2018/11/29 14:56
+ * @Modified_By adao 2018/11/29 14:56
+ */
+@Component
+public final class KafkaMsgListener {
+
+    /**
+     * logger
+     */
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
+
+    /**
+     * dataCollection Listener
+     *
+     * @param record
+     * @param acknowledgment
+     * @return
+     * @author adao
+     * @time 2018/12/3 19:26
+     * @CopyRight 万物皆导
+     */
+    @KafkaListener(topics = {"qts_cpc_count_topic"})
+    public void dataCollectionListen(ConsumerRecord<String, String> record, Acknowledgment acknowledgment) {
+        // procession something in dataCollectionService
+        dealRecord(record);
+        // submit message offset
+        acknowledgment.acknowledge();
+
+    }
+    /**
+     * deal msg
+     *
+     * @author 阿导
+     * @time 2019/3/14 15:23
+     * @CopyRight 万物皆导
+     * @param record
+     * @return
+     */
+
+    private void dealRecord(ConsumerRecord<String, String> record) {
+
+        String value = record.value();
+
+        if(StringUtils.isEmpty(value)){
+            return;
+        }
+        List<String> datas = JSON.parseArray(value,String.class);
+
+        datas.forEach(data->{
+            // message body parse to map
+            Map<String, String> map = (Map<String, String>) JSONObject.parse(data);
+            map.forEach((key,val)-> System.out.println("[key:"+key+",value="+val+"]"));
+            System.out.println("_____________________________________________");
+        });
+    }
+}
+
+
+```
 
 # 开发建议
 
