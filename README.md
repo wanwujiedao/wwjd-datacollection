@@ -206,7 +206,7 @@ qts.business.filter.rules.cpc.fields=contentId,eventType
 
 ### 每日打开埋点源方发起埋点数据
 
-- `namespace`:wwjdhe
+- `namespace`:wwjd
 
 - `tablename`:data_collection_day
 
@@ -227,7 +227,7 @@ qts.business.filter.rules.cpc.fields=contentId,eventType
 
 ### 常规埋点数据
 
-- `namespace`:wwjdhe
+- `namespace`:wwjd
 
 - `tablename`:data_collection
 
